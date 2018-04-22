@@ -3,22 +3,45 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | FinanceGame2D</title>
+    <title>21Century Games: Pursuit of Happiness</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
+      function makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 16; i++)
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+      }
+
+      if (document.cookie.indexOf("user_id=") < 0) {
+        document.cookie = "user_id=" + makeid() + ";";
+      }
+
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/PursuitOfHappiness.json", {onProgress: UnityProgress});
     </script>
+    <style>
+      body {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <div class="webgl-content">
+      <h1>The Pursuit of Happiness Game</h1>
+      <p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSebzDgeLU6MlyDgx1IEDx4DXyPn-AB4JH5EuLYIwfg1OKfOkQ/viewform">Click here to give us feedback on the game</a>
+      </p>
       <div id="gameContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">FinanceGame2D</div>
+        <div class="title">Pursuit of Happiness</div>
       </div>
     </div>
   </body>
